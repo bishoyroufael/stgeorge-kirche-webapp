@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "paths": {
+          "@components/*": ["./src/components/*"],
+          "@images/*": ["./static/images/*"],
+          "@styles/*": ["./static/styles/*"]
+        },
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    }
+}

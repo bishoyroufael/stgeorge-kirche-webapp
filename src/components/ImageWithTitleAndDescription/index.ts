@@ -1,0 +1,1 @@
+export { ImageWithTitleAndDescription } from "./ImageWithTitleAndDescription"
