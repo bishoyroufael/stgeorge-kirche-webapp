@@ -1,1 +1,0 @@
-export { IconOutlineDotsCircleHorizontal } from "./IconOutlineDotsCircleHorizontal";

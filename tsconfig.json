@@ -7,6 +7,7 @@
           "@styles/*": ["./static/styles/*"]
         },
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "lib": ["ES2023", "DOM"]
     }
 }

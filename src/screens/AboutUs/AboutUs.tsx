@@ -1,6 +1,4 @@
 import { AddressesSummary } from "@components/AddressesSummary";
-import { Footer } from "@components/Footer";
-import { Header } from "@components/Header";
 import React from "react";
 
 export const AboutUs = () => {
