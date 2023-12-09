@@ -11,12 +11,8 @@ import os
 
 app = Flask(__name__)
 
-if os.environ['API_ENV'] == 'DEV':
-    app.config['SECRET_KEY'] = os.environ['DEV_SECRET_KEY']
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DEV_DB_URL']
-else: # Prod
-    app.config['SECRET_KEY'] = os.environ['PROD_SECRET_KEY']
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['PROD_DB_URL']
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DB_URL']
 
 # Set the maximum content length for requests (10 MB)
 # i.e used to limit large file uploads
@@ -38,5 +34,4 @@ app.register_blueprint(storage_bp)
 
 @app.route("/")
 def entry():
-    Path('../neu_bibliotek').mkdir(parents=True, exist_ok=True)
     return jsonify(message='Ok!') 
