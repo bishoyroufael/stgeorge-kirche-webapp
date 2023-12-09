@@ -33,7 +33,7 @@ def signup():
         _user = db.session.query(User).filter(User.email == email).first()
         if _user:
             # Conflict
-            abort(409)
+            abort(409, description='user already exists, try to signin')
 
         hashed_password = generate_password_hash(password)
 
@@ -41,7 +41,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
 
-        return jsonify('Ok!')
+        return jsonify(message='Ok!')
 
     abort(400)
 
@@ -55,14 +55,15 @@ def signin():
 
         user = User.query.filter(User.email == email).first()
 
-    if user and check_password_hash(user.password_hash, password):
-        session['user_id'] = user.id
-        session['user_storage_folder'] = user.email.split('@')[0]
+        if user and check_password_hash(user.password_hash, password):
+            session['user_id'] = user.id
+            session['user_storage_folder'] = user.email.split('@')[0]
 
-        return jsonify('Ok!')
-    else:
-        # Bad user
-        abort(400)
+            return jsonify(message='Ok!')
+        else:
+            # Bad user
+            abort(400, description='wrong email or password')
+    abort(400)
 
 @auth_bp.route('/signout')
 def signout():

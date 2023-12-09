@@ -4,11 +4,19 @@ from pathlib import Path
 from models.base import db
 from auth.routes import auth_bp
 from storage.routes import storage_bp
+from dotenv import load_dotenv
+status = load_dotenv('.env')
+assert status, 'env file is missing'
+import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://myuser:mypassword@localhost:3306/mydatabase'
+if os.environ['API_ENV'] == 'DEV':
+    app.config['SECRET_KEY'] = os.environ['DEV_SECRET_KEY']
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DEV_DB_URL']
+else: # Prod
+    app.config['SECRET_KEY'] = os.environ['PROD_SECRET_KEY']
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['PROD_DB_URL']
 
 # Set the maximum content length for requests (10 MB)
 # i.e used to limit large file uploads

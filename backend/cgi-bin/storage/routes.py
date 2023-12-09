@@ -76,7 +76,7 @@ def upload_file():
 
     file.save(user_folder_path.joinpath(filename))
 
-    return jsonify('Ok!')
+    return jsonify(message='Ok!')
 
 @storage_bp.route('/download/<filename>', methods=['GET'])
 @login_required
@@ -103,4 +103,4 @@ def remove_file(filename):
     # Remove the file
     file_path.unlink()
 
-    return jsonify('Ok!')
+    return jsonify(message='Ok!')
