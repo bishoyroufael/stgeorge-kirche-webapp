@@ -1,11 +1,16 @@
 # Provides a simple storage endpoints for CRUD operations
-from flask import Blueprint, request, session, abort, jsonify, current_app, send_from_directory
+from flask import request, session, jsonify, current_app, send_from_directory
 from auth.decor import login_required
 from pathlib import Path
 import json
 from werkzeug.utils import secure_filename
+import os
+from apiflask import APIBlueprint, abort
+from schemas.storage import *
 
-storage_bp = Blueprint('storage_routes', __name__)
+storage_bp = APIBlueprint('storage_routes', __name__)
+
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'csv', 'xlsx'}
 
 def get_user_folder_path():
     # Get the user's email from the session
@@ -23,13 +28,19 @@ def get_user_folder_path():
 
     return user_folder_path
 
+def get_directory_size(folder_path: Path):
+    return sum(file.stat().st_size for file in  folder_path.rglob('*'))
 
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'csv', 'xlsx'}
 
-@storage_bp.route('/files', methods=['GET'])
+@storage_bp.get('/files')
+@storage_bp.output(StorageFiles)
 @login_required
 def list_files():
     user_folder_path = get_user_folder_path()
+
+    folder_size = get_directory_size(user_folder_path)
+
+    remaining_bytes = current_app.config['MAX_STORAGE_SIZE_PER_USER'] - folder_size
 
     # Use pathlib to get file information
     files_info = []
@@ -43,31 +54,27 @@ def list_files():
             }
             files_info.append(file_info)
 
-
     # Return the JSON response
-    return jsonify(files_info)
+    return {'files': files_info, 'remaining_bytes': remaining_bytes}
 
 
-@storage_bp.route('/upload', methods=['POST'])
+@storage_bp.post('/upload')
+@storage_bp.input(FileUpload, location='files')
 @login_required
-def upload_file():
+def upload_file(files_data : FileUpload):
 
     user_folder_path = get_user_folder_path()
 
-    # Check if the post request has the file part
-    if 'file' not in request.files:
-        abort(400, description='file is missing')
+    folder_size = get_directory_size(user_folder_path)
 
-    file = request.files['file']
+    file = files_data['file']
 
-    # Check if the file is selected
-    if file.filename == '':
-        abort(400, description='filename is malformed')
-
-    # Check if the file has an allowed extension
-    if '.' in file.filename and file.filename.rsplit('.', 1)[1].lower() not in ALLOWED_EXTENSIONS:
-        abort(400, description='file type is not allowed')
-
+    file.stream.seek(0, os.SEEK_END)
+    file_size = file.stream.tell()
+    # print(file_size)
+    if file_size + folder_size >= current_app.config['MAX_STORAGE_SIZE_PER_USER']:
+        abort(400, message='max storage size reached')
+    file.stream.seek(0)
 
     # Save the file with a secure filename
     filename = secure_filename(file.filename)
@@ -78,27 +85,29 @@ def upload_file():
 
     return jsonify(message='Ok!')
 
-@storage_bp.route('/download/<filename>', methods=['GET'])
+@storage_bp.get('/download')
+@storage_bp.input(DownloadFile, location='query')
 @login_required
-def download_file(filename):
+def download_file(query_data):
     user_folder_path = get_user_folder_path()
 
     # Check if the requested file exists
-    file_path = user_folder_path.joinpath(filename)
+    file_path = user_folder_path.joinpath(query_data['filename'])
     if not file_path.exists():
-        abort(404, description='file not found')
+        abort(404, message='file not found')
 
-    return send_from_directory(user_folder_path, filename, as_attachment=True)
+    return send_from_directory(user_folder_path, file_path.name, as_attachment=True)
 
-@storage_bp.route('/remove/<filename>', methods=['POST'])
+@storage_bp.delete('/remove')
+@storage_bp.input(RemoveFile, location='query')
 @login_required
-def remove_file(filename):
+def remove_file(query_data):
     user_folder_path = get_user_folder_path()
 
     # Check if the requested file exists
-    file_path = user_folder_path.joinpath(filename)
+    file_path = user_folder_path.joinpath(query_data['filename'])
     if not file_path.exists():
-        abort(400, description='file not found')
+        abort(400, message='file not found')
 
     # Remove the file
     file_path.unlink()
