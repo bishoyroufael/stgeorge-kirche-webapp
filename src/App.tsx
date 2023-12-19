@@ -10,6 +10,10 @@ import { AboutUs } from "./screens/AboutUs";
 import { Header } from "@components/Header";
 import { Footer } from "@components/Footer";
 import { getLastTenChurchEvents, getNextThreeEvents } from "./sheets/utils";
+import { LogIn } from "./screens/LogIn";
+import { Bibliothek } from "./screens/Bibliothek";
+import { AuthProvider } from "@components/AuthContext";
+import { ProtectedRoute } from "@components/ProtectedComponent/ProtectedComponent";
 require('dotenv').config()
 
 
@@ -27,16 +31,22 @@ export const App = () => {
     return (
         <Router>
             <div className="mx-auto max-w-screen-xl">
-                <Header />
-                <Routes>
-                    <Route path="/" element={<Home nextThreeEvents={getNextThreeEvents(events)} />}/>
-                    <Route path="/contact-us" element={<ContactUs />} />
-                    <Route path="/about-us" element={<AboutUs />} />
-                </Routes>
+                <AuthProvider>
 
-                {/* Empty Space */}
-                <div className="pt-20"></div>
-                <Footer />
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Home nextThreeEvents={getNextThreeEvents(events)} />} />
+                        <Route path="/contact-us" element={<ContactUs />} />
+                        <Route path="/about-us" element={<AboutUs />} />
+                        <Route path="/log-in" element={<LogIn />} />
+                        <Route path="/bibliothek" element={<ProtectedRoute component={Bibliothek} />} />
+
+                    </Routes>
+
+                    {/* Empty Space */}
+                    <div className="pt-20"></div>
+                    <Footer />
+                </AuthProvider>
             </div>
         </Router>
     )

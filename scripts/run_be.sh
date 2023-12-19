@@ -1,0 +1,1 @@
+cd backend/cgi-bin && FLASK_APP=api.py flask run --reload

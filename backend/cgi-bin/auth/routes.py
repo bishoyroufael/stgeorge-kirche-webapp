@@ -11,10 +11,10 @@ from auth.decor import login_required
 auth_bp = APIBlueprint('auth_routes', __name__)
 
 
-@auth_bp.post('/sign_up')
-@auth_bp.input(SignUp, location='form')
-@auth_bp.input(SignUpToken, location='query')
-def sign_up(form_data, query_data):
+@auth_bp.route('/register', methods=['OPTION', 'POST'])
+@auth_bp.input(Register, location='form')
+@auth_bp.input(RegisterToken, location='query')
+def register(form_data, query_data):
     email = form_data['email']
     password = form_data['password']
 
@@ -37,9 +37,9 @@ def sign_up(form_data, query_data):
     return jsonify(message='Ok!')
 
 
-@auth_bp.post('/sign_in')
-@auth_bp.input(SignIn, location='form')
-def sign_in(form_data):
+@auth_bp.route('/log_in', methods=['OPTION', 'POST'])
+@auth_bp.input(LogIn, location='form')
+def log_in(form_data):
     email = form_data['email']
     password = form_data['password']
 
@@ -54,9 +54,18 @@ def sign_in(form_data):
         # Bad user
         abort(400, message='wrong email or password')
 
-@auth_bp.post('/sign_out')
+
+# Based on: https://www.youtube.com/watch?v=EbUNgXQIqrk
+# todo: investigate security?
+@auth_bp.route('/is_logged', methods=['OPTION', 'GET'])
 @login_required
-def sign_out():
+def is_logged():
+    return jsonify(message='Ok!')
+
+
+@auth_bp.route('/log_out', methods=['OPTION', 'POST'])
+@login_required
+def log_out():
     session.pop('user_id', None)
     session.pop('user_storage_folder', None)
     return jsonify(message='Ok!')

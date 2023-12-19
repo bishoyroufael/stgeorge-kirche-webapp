@@ -1,5 +1,5 @@
 # Provides a simple storage endpoints for CRUD operations
-from flask import request, session, jsonify, current_app, send_from_directory
+from flask import session, jsonify, current_app, send_from_directory
 from auth.decor import login_required
 from pathlib import Path
 import json
@@ -10,7 +10,6 @@ from schemas.storage import *
 
 storage_bp = APIBlueprint('storage_routes', __name__)
 
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'csv', 'xlsx'}
 
 def get_user_folder_path():
     # Get the user's email from the session
@@ -60,6 +59,7 @@ def list_files():
 
 @storage_bp.post('/upload')
 @storage_bp.input(FileUpload, location='files')
+@storage_bp.output(FileDetails)
 @login_required
 def upload_file(files_data : FileUpload):
 
@@ -78,12 +78,11 @@ def upload_file(files_data : FileUpload):
 
     # Save the file with a secure filename
     filename = secure_filename(file.filename)
+    file_path = user_folder_path.joinpath(filename)
+    file.save(file_path)
 
-    # todo: Check if file is already present
 
-    file.save(user_folder_path.joinpath(filename))
-
-    return jsonify(message='Ok!')
+    return {'filename': file_path.name, 'size': file_path.stat().st_size, 'created_at': file_path.stat().st_ctime, 'modified_at': file_path.stat().st_mtime}
 
 @storage_bp.get('/download')
 @storage_bp.input(DownloadFile, location='query')
