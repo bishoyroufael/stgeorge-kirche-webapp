@@ -10,12 +10,6 @@ export const Header = (): React.JSX.Element => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-
-    console.log("Header", authContext)
-
-  }, [authContext])
-
   const handleClick = () => {
     if (authContext.authenticated) {
       // Log out
@@ -31,49 +25,51 @@ export const Header = (): React.JSX.Element => {
       navigate('/log-in')
     }
 
+    if (isMenuOpen) {
+      setIsMenuOpen(false)
+    }
+
     return null
   }
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   return (
-    isMenuOpen ? <div className="opacity-100 bg-c-white z-20 top-0 left-0 w-full h-full fixed">
+    isMenuOpen ? <div className="opacity-100 bg-c-white z-20 top-0 left-0 w-full h-full fixed touch-none">
       <div className="flex justify-end">
-      <button className="text-c-green p-4" onClick={handleMenuToggle}>
-        <svg
-          className="w-6 h-6 stroke-c-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+        <button className="text-c-green p-4" onClick={()=>setIsMenuOpen(false)}>
+          <svg
+            className="w-6 h-6 stroke-c-main"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
 
       <div className="flex flex-col p-4 text-xl">
         <a href="/" className="text-c-main py-2">Home</a>
         <a href="/about-us" className="text-c-main py-2">Über Uns</a>
+        <a href="/calendar" className="text-c-main py-2">Kalender</a>
         {authContext.authenticated && <a href="/bibliothek" className="text-c-main py-2">Die Bibliothek</a>}
         <a href="/contact-us" className="text-c-main py-2">Kontakt</a>
         <div className="border-2 h-1 w-full border-c-background"></div>
 
-        <a href="#" className="text-c-main py-2" onClick={handleClick}>{authContext.authenticated ? 'Log Out' : 'Log In'}</a>
+        <a href="#" className="text-c-main py-2" onClick={handleClick}>{authContext.authenticated ? 'Abmeldung' : 'Anmeldung'}</a>
       </div>
 
     </div> :
       <header className="w-full text-white">
         {/* Hamburger menu button for smaller screens */}
-        <div className="md:hidden absolute top-[5%] left-[5%]">
-          <button className="text-c-green" onClick={handleMenuToggle}>
+        <div className="md:hidden absolute top-[3%] left-[3%]">
+          <button className="text-c-green" onClick={()=>setIsMenuOpen(true)}>
             <svg
               className="w-6 h-6 stroke-c-main"
               fill="none"
@@ -94,26 +90,22 @@ export const Header = (): React.JSX.Element => {
         <div className="flex pt-4 pb-4 md:p-7 flex-col md:flex-row items-center justify-between">
 
           {/* Logo container on the left, center for small screens */}
-          <div className="flex items-center space-x-4 text-c-green">
-            <img src={require("@images/churchlogo-header.png")} alt="St. George Logo Header" className="h-auto"></img>
+          <div className="flex justify-center items-center space-x-4 text-c-green">
+            <img src={require("@images/churchlogo-header.png")} alt="St. George Logo Header" className="h-auto object-contain w-[120px] md:w-[160px]"></img>
           </div>
-
-
 
           {/* Central navigation items */}
           <div className="flex items-center space-x-8 text-c-green font-bold invisible h-0 md:visible md:h-auto">
             <a href="/" className="hover:text-c-main">Home</a>
             <a href="/about-us" className="hover:text-c-main">Über Uns</a>
-            {/* <a href="#" className="hover:text-c-main">Dienste</a> */}
-
+            <a href="/calendar" className="hover:text-c-main">Kalender</a>
             {authContext.authenticated && <a href="/bibliothek" className="hover:text-c-main">Die Bibliothek</a>}
-
             <a href="/contact-us" className="hover:text-c-main">Kontakt</a>
           </div>
 
           {/* Right-aligned items (Login and Language) */}
           <div className="flex items-center space-x-4 text-c-green font-bold invisible h-0 md:visible md:h-auto">
-            <a href="#" className="hover:text-c-main" onClick={handleClick}>{authContext.authenticated ? 'Log Out' : 'Log In'}</a>
+            <a href="#" className="hover:text-c-main" onClick={handleClick}>{authContext.authenticated ? 'Abmeldung' : 'Anmeldung'}</a>
             <a href="#" className="hover:text-c-main font-arabic">عربي</a>
           </div>
         </div>

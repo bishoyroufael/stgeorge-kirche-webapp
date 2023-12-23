@@ -31,7 +31,7 @@ export const ImageWithTitleAndDescription = ({ title, image, headerText, descrip
   return (
     <div className="relative bg-white w-full pt-20">
       {/* Header Title */}
-      <h2 className="text-4xl lg:text-5xl font-bold mb-4">{title}</h2>
+      <h2 className="text-4xl font-bold mb-4">{title}</h2>
 
       {/* Image and Text Column */}
       <div className="flex flex-col lg:items-center lg:flex-row">

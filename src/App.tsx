@@ -9,11 +9,12 @@ import { ContactUs } from "./screens/ContactUs";
 import { AboutUs } from "./screens/AboutUs";
 import { Header } from "@components/Header";
 import { Footer } from "@components/Footer";
-import { getLastTenChurchEvents, getNextThreeEvents } from "./sheets/utils";
+import { getChurchEvents, getNextNEvents } from "./sheets/utils";
 import { LogIn } from "./screens/LogIn";
 import { Bibliothek } from "./screens/Bibliothek";
 import { AuthProvider } from "@components/AuthContext";
 import { ProtectedRoute } from "@components/ProtectedComponent/ProtectedComponent";
+import { Calendar } from "./screens/Calendar";
 require('dotenv').config()
 
 
@@ -22,7 +23,7 @@ export const App = () => {
 
     useEffect(() => {
         (async () => {
-            const events = await getLastTenChurchEvents();
+            const events = await getChurchEvents();
             setEvents(events);
         })()
 
@@ -35,12 +36,12 @@ export const App = () => {
 
                     <Header />
                     <Routes>
-                        <Route path="/" element={<Home nextThreeEvents={getNextThreeEvents(events)} />} />
+                        <Route path="/" element={<Home nextThreeEvents={getNextNEvents([...events], 3)} />} />
                         <Route path="/contact-us" element={<ContactUs />} />
                         <Route path="/about-us" element={<AboutUs />} />
                         <Route path="/log-in" element={<LogIn />} />
                         <Route path="/bibliothek" element={<ProtectedRoute component={Bibliothek} />} />
-
+                        <Route path="/calendar" element={<Calendar events={events}/>} />
                     </Routes>
 
                     {/* Empty Space */}

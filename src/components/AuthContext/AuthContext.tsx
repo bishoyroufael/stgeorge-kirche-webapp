@@ -10,10 +10,10 @@ export const AuthProvider = ({ children }) => {
             const authApi = new API.AuthRoutesApi(undefined, process.env.REACT_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
             const response = await authApi.apiV1AuthIsLoggedGet({withCredentials: true})
             if (response.status == 200){
-                console.log('user authenticated from server!')
+                // console.log('user authenticated from server!')
                 setAuthenticated(true);
             } else {
-                console.log('user not authenticated from server!')
+                // console.log('user not authenticated from server!')
                 setAuthenticated(false)
             }
         })()

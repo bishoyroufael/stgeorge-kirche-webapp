@@ -82,7 +82,7 @@ export const Bibliothek = () => {
 
     const handleFileChange = async (event) => {
         const selectedFile = event.target.files[0];
-        console.log('Selected file:', selectedFile);
+        // console.log('Selected file:', selectedFile);
 
         try {
             // Check if the file already exists in the current file list
@@ -105,7 +105,7 @@ export const Bibliothek = () => {
                 const response = await storageApi.apiV1StorageUploadPost(selectedFile, { withCredentials: true });
 
                 if (response.status === 200) {
-                    console.log('Uploaded file');
+                    // console.log('Uploaded file');
                     const filedetails = response.data;
                     const updatedFiles = [...storageData.files];
                     updatedFiles.push(filedetails);
@@ -139,7 +139,7 @@ export const Bibliothek = () => {
             <div>
                 <h2 className="text-4xl font-bold mb-4">Bibliothek</h2>
                 <button className="ml-auto px-2 py-2 bg-c-green text-white rounded flex justify-center items-center" onClick={handleButtonClick}>
-                    Upload
+                    Hochladen
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -157,18 +157,18 @@ export const Bibliothek = () => {
 
             {
                 storageData &&
-                <h2 className="text-2xl p-2"> Remaining Storage: {prettyPrintBytes(storageData.remaining_bytes)} </h2>
+                <h2 className="text-xl p-2"> Verfügbarer Speicherplatz: {prettyPrintBytes(storageData.remaining_bytes)} </h2>
             }
 
             <div className="mx-auto overflow-y-auto max-h-[60vh] rounded-2xl border-2 border-c-main">
                 <table className="min-w-full">
                     <thead className="bg-c-background">
                         <tr>
-                            <th className="py-2 px-4 border-b">Filename</th>
-                            <th className="py-2 px-4 border-b">Filesize</th>
-                            <th className="py-2 px-4 border-b">Creation Date</th>
-                            <th className="py-2 px-4 border-b">Modification Date</th>
-                            <th className="py-2 px-4 border-b">Actions</th>
+                            <th className="py-2 px-4 border-b">Dateiname</th>
+                            <th className="py-2 px-4 border-b">Dateigröße</th>
+                            <th className="py-2 px-4 border-b">Erstellungsdatum</th>
+                            <th className="py-2 px-4 border-b">Änderungsdatum</th>
+                            <th className="py-2 px-4 border-b">Aktionen</th>
                         </tr>
                     </thead>
                     <tbody>

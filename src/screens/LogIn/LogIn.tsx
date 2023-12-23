@@ -18,7 +18,6 @@ export const LogIn = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(authContext)
         if (authContext && authContext.authenticated) {
             navigate('/bibliothek');
         }
@@ -40,7 +39,7 @@ export const LogIn = () => {
             const auth = new API.AuthRoutesApi(undefined, process.env.REACT_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
             const response = await auth.apiV1AuthLogInPost(formData.email, formData.password, { withCredentials: true })
 
-            console.log('Server Response:', response.data);
+            // console.log('Server Response:', response.data);
             if (response.status == 200) {
                 authContext.setAuthenticated(true);
             }
@@ -62,7 +61,7 @@ export const LogIn = () => {
                 <div className="shadow-xl w-full md:w-1/2 p-14 rounded-xl space-y-4 border-c-background border-2">
 
                     <div className="flex justify-center items-center">
-                        <img src={require("@images/churchlogo-header.png")} alt="St. George Logo Header" className="h-auto"></img>
+                        <img src={require("@images/churchlogo-header.png")} alt="St. George Logo Header" className="h-auto object-contain w-[120px] md:w-[160px]"></img>
                     </div>
 
                     <form className="w-full" onSubmit={handleSubmit}>
