@@ -18,8 +18,9 @@ export const LogIn = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (authContext && authContext.authenticated) {
-            navigate('/bibliothek');
+        // console.log("login route called")
+        if (authContext.authenticated) {
+            navigate('/');
         }
     }, [authContext])
 
@@ -42,6 +43,7 @@ export const LogIn = () => {
             // console.log('Server Response:', response.data);
             if (response.status == 200) {
                 authContext.setAuthenticated(true);
+                navigate('/')
             }
             // You can handle success or navigate to another page here
         } catch (error) {
