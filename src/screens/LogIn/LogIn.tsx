@@ -58,7 +58,7 @@ export const LogIn = () => {
             <h2 className="text-4xl font-bold mb-4">Log In</h2>
 
             <div className="flex justify-center items-center max-w-screen-xl min-h-[100vh]">
-                <div className="shadow-xl w-full md:w-1/2 p-14 rounded-xl space-y-4 border-c-background border-2">
+                <div className="shadow-xl w-full md:w-1/2 p-14 rounded-xl space-y-4 border-c-background border-2" data-aos="fade-up">
 
                     <div className="flex justify-center items-center">
                         <img src={require("@images/churchlogo-header.png")} alt="St. George Logo Header" className="h-auto object-contain w-[120px] md:w-[160px]"></img>

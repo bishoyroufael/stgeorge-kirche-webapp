@@ -44,12 +44,12 @@ export const Calendar = ({ events }: { events: Array<Event> }) => {
             <div>
                 <h2 className="text-4xl font-bold mb-4">Alle Veranstaltungen</h2>
 
-                <div className="invisible h-0 lg:visible lg:h-auto">
+                <div className="invisible h-0 lg:visible lg:h-auto" data-aos="fade-up">
                     <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" events={calendarEvents} locale={deLocale} headerToolbar={{ start: 'title', end: 'prev,next' }} eventClassNames={'flex flex-wrap'} dayHeaderClassNames={'bg-c-background'}/>
                 </div>
 
                 {/* For Smaller Screens */}
-                <div className="lg:hidden lg:h-0">
+                <div className="lg:hidden lg:h-0" data-aos="fade-up">
                     <FullCalendar plugins={[listPlugin]} initialView="listWeek" events={calendarEvents} locale={deLocale} headerToolbar={{ start: 'title', end: 'prev,next' }} />
                 </div>
             </div>

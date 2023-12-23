@@ -10,6 +10,8 @@ import { Event } from "../../sheets/utils";
 export const Home = ({ nextThreeEvents }: { nextThreeEvents?: Array<Event> }): React.JSX.Element => {
   return (
     <div>
+
+      {/* Need to be refactored */}
       <HomeBanner
         image={require("@images/church-banner.png")}
         quote={"Gesegnet ist, wer im Namen des Herrn kommt. (Matthäus 9:21)"}
@@ -19,6 +21,7 @@ export const Home = ({ nextThreeEvents }: { nextThreeEvents?: Array<Event> }): R
               location={nextThreeEvents[0].location} /> : null}
 
       />
+
       {/* Uber Uns Section */}
       <ImageWithTitleAndDescription
         title={"Über Uns"}
