@@ -68,7 +68,7 @@ export const Header = (): React.JSX.Element => {
     </div> :
       <header className="w-full text-white">
         {/* Hamburger menu button for smaller screens */}
-        <div className="md:hidden absolute top-[3%] left-[3%]">
+        <div className="md:hidden absolute top-6 left-3">
           <button className="text-c-green" onClick={()=>setIsMenuOpen(true)}>
             <svg
               className="w-6 h-6 stroke-c-main"
