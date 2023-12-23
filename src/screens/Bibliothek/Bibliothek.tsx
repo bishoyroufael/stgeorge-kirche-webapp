@@ -135,10 +135,10 @@ export const Bibliothek = () => {
 
     return (
         <div className="mx-auto max-w-screen-xl">
-            <div className="pt-20"></div>
-            <div className="flex items-center">
-                <h2 className="text-5xl font-bold mb-4">Bibliothek</h2>
-                <button className="ml-auto px-4 py-2 bg-c-green text-white rounded flex justify-center items-center" onClick={handleButtonClick}>
+            <div className="pt-10"></div>
+            <div>
+                <h2 className="text-4xl font-bold mb-4">Bibliothek</h2>
+                <button className="ml-auto px-2 py-2 bg-c-green text-white rounded flex justify-center items-center" onClick={handleButtonClick}>
                     Upload
                     <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +161,7 @@ export const Bibliothek = () => {
             }
 
             <div className="mx-auto overflow-y-auto max-h-[60vh] rounded-2xl border-2 border-c-main">
-                <table className="min-w-full ">
+                <table className="min-w-full">
                     <thead className="bg-c-background">
                         <tr>
                             <th className="py-2 px-4 border-b">Filename</th>

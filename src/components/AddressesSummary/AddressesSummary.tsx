@@ -5,8 +5,8 @@ export const AddressesSummary = ({title}): React.JSX.Element => {
     return(
         <div className="relative bg-white w-full pt-20">
             {/* Header Title */}
-            <h2 className="text-5xl font-bold mb-4">{title}</h2>
-            <div className="justify-between flex space-x-20">
+            <h2 className="text-4xl font-bold mb-4">{title}</h2>
+            <div className="justify-between flex md:gap-x-10 gap-y-10 flex-col md:flex-row">
             <InfoCard
                 image={require("@images/church-icon.png")} 
                 headerText={"Dresden"}

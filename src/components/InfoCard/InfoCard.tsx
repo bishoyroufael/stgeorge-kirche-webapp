@@ -2,10 +2,10 @@ import React from "react";
 import { FaAngleRight } from "react-icons/fa";
 
 
-export const InfoCard = ({ image, headerText, pa, pb, pc, pd, url, fw}:
-    { image: string, headerText:string, pa:string, pb:string, pc?:string, pd?:string, url?: string, fw? : boolean}): React.JSX.Element => {
+export const InfoCard = ({ image, headerText, pa, pb, pc, pd, url, fw }:
+    { image: string, headerText: string, pa: string, pb: string, pc?: string, pd?: string, url?: string, fw?: boolean }): React.JSX.Element => {
     return (
-        <div className={ fw ? "bg-c-background flex border font-roboto rounded-md p-6 shadow-md" : "bg-c-background flex border font-roboto rounded-md p-6 shadow-md w-1/2"}>
+        <div className={"bg-c-background flex border font-roboto rounded-md p-6 shadow-md w-full flex-row"}>
 
             <div className="flex-shrink-0 mr-4">
                 <img src={image} alt="Church image" className="w-46 h-46 object-cover" />

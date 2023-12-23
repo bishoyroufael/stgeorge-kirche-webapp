@@ -6,7 +6,7 @@ export const ContactUs = () => {
     return(
         <div className="mx-auto max-w-screen-xl">
             <div className="pt-20"></div>
-            <h2 className="text-5xl font-bold mb-4">Kontakt</h2>
+            <h2 className="text-4xl font-bold mb-4">Kontakt</h2>
             <InfoCard 
                 image={require('@images/vaterguirgis.png')}
                 headerText={"Vater Guirgis El Moharaki"}

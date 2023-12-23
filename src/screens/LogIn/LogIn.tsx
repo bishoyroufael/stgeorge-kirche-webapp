@@ -17,12 +17,12 @@ export const LogIn = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(authContext)
-        if (authContext && authContext.authenticated){
+        if (authContext && authContext.authenticated) {
             navigate('/bibliothek');
         }
-    },[authContext])
+    }, [authContext])
 
     const handleChange = (e) => {
         setFormData({
@@ -56,57 +56,64 @@ export const LogIn = () => {
     return (
         <div className="mx-auto max-w-screen-xl">
             <div className="pt-20"></div>
-            <h2 className="text-5xl font-bold mb-4">Log In</h2>
+            <h2 className="text-4xl font-bold mb-4">Log In</h2>
 
-            <div className="flex justify-center items-center max-w-screen-xl h-[60vh]">
+            <div className="flex justify-center items-center max-w-screen-xl min-h-[100vh]">
+                <div className="shadow-xl w-full md:w-1/2 p-14 rounded-xl space-y-4 border-c-background border-2">
 
-                <form className="w-1/2" onSubmit={handleSubmit}>
-                    {/* Email Input */}
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block text-c-green text-sm font-bold mb-2">
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Please enter your email"
-                            className="w-full p-2 border-2 border-c-black rounded-lg"
-                        />
+                    <div className="flex justify-center items-center">
+                        <img src={require("@images/churchlogo-header.png")} alt="St. George Logo Header" className="h-auto"></img>
                     </div>
 
-                    {/* Password Input */}
-                    <div className="mb-6">
-                        <label htmlFor="password" className="block text-c-green text-sm font-bold mb-2">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            placeholder="Please enter your password"
-                            className="w-full p-2 border-2 border-c-black rounded-lg"
-                        />
-                    </div>
+                    <form className="w-full" onSubmit={handleSubmit}>
 
-                    {/* Login Button */}
-                    {isLoading ? <ThreeDots width={30} color="black" wrapperClass="justify-center" /> :
-                        <button
-                            type="submit"
-                            className="w-full bg-c-main text-white p-2 rounded hover:bg-opacity-80 focus:outline-none focus:ring focus:border-blue-300"
-                            disabled={isLoading}
-                        >
-                            Log In
+                        {/* Email Input */}
+                        <div className="mb-4">
+                            <label htmlFor="email" className="block text-c-green text-sm font-bold mb-2">
+                                Email
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Please enter your email"
+                                className="w-full p-2 border-2 border-c-main rounded-lg"
+                            />
+                        </div>
 
-                        </button>
-                    }
+                        {/* Password Input */}
+                        <div className="mb-6">
+                            <label htmlFor="password" className="block text-c-green text-sm font-bold mb-2">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="Please enter your password"
+                                className="w-full p-2 border-2 border-c-main rounded-lg"
+                            />
+                        </div>
 
-                    {error && <p>Error: {error}</p>}
-                </form>
+                        {/* Login Button */}
+                        {isLoading ? <ThreeDots width={30} color="black" wrapperClass="justify-center" /> :
+                            <button
+                                type="submit"
+                                className="w-full bg-c-main text-white p-2 rounded hover:bg-opacity-80 focus:outline-none focus:ring focus:border-blue-300"
+                                disabled={isLoading}
+                            >
+                                Log In
+
+                            </button>
+                        }
+
+                        {error && <p>Error: {error}</p>}
+                    </form>
+                </div>
             </div>
         </div>
     )

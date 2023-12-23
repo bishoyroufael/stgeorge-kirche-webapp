@@ -15,9 +15,10 @@ export const Home = ({ nextThreeEvents }: { nextThreeEvents?: Array<Event> }): R
         image={require("@images/church-banner.png")}
         quote={"Gesegnet ist, wer im Namen des Herrn kommt. (Matthäus 9:21)"}
         eventCard={nextThreeEvents && nextThreeEvents.length != 0 ?
-          <EventCard eventName={nextThreeEvents[0].Title}
-            date={new Date(`${nextThreeEvents[0].Date} ${nextThreeEvents[0].Time}`)}
-            location={nextThreeEvents[0].Location} /> : null}
+            <EventCard eventName={nextThreeEvents[0].Title}
+              date={new Date(`${nextThreeEvents[0].Date} ${nextThreeEvents[0].Time}`)}
+              location={nextThreeEvents[0].Location} /> : null}
+
       />
       {/* Uber Uns Section */}
       <ImageWithTitleAndDescription
