@@ -15,6 +15,7 @@ import { Bibliothek } from "./screens/Bibliothek";
 import { AuthProvider } from "@components/AuthContext";
 import { ProtectedRoute } from "@components/ProtectedComponent/ProtectedComponent";
 import { Calendar } from "./screens/Calendar";
+import { Services } from "./screens/Services/Services";
 require('dotenv').config()
 
 
@@ -31,7 +32,7 @@ export const App = () => {
 
     return (
         <Router>
-            <div className="mx-auto w-[95%] lg:w-[60%]">
+            <div className="mx-auto w-[95%] lg:w-[75%]">
                 <AuthProvider>
 
                     <Header />
@@ -42,6 +43,7 @@ export const App = () => {
                         <Route path="/log-in" element={<LogIn />} />
                         <Route path="/bibliothek" element={<ProtectedRoute component={Bibliothek} />} />
                         <Route path="/calendar" element={<Calendar events={events}/>} />
+                        <Route path="/services" element={<Services/>} />
                     </Routes>
 
                     {/* Empty Space */}

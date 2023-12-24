@@ -5,14 +5,14 @@ import { FaAngleRight } from "react-icons/fa";
 export const InfoCard = ({ image, headerText, pa, pb, pc, pd, url, fw }:
     { image: string, headerText: string, pa: string, pb: string, pc?: string, pd?: string, url?: string, fw?: boolean }): React.JSX.Element => {
     return (
-        <div className={"bg-c-background flex border font-roboto rounded-md p-6 shadow-md w-full flex-row"}>
+        <div className={"bg-c-background flex border font-roboto rounded-md p-6 shadow-md w-full flex-row space-x-8"}>
 
-            <div className="flex-shrink-0 mr-4">
+            <div>
                 <img src={image} alt="Church image" className="w-46 h-46 object-cover" />
             </div>
 
             <div className="flex flex-col">
-                <h2 className="text-2xl font-bold mb-2">{headerText}</h2>
+                <h2 className="text-3xl font-bold mb-2">{headerText}</h2>
 
                 <div className="mb-1">{pa}</div>
                 <div className="mb-1">{pb}</div>
