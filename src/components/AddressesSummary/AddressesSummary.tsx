@@ -6,10 +6,11 @@ export const AddressesSummary = ({ title }): React.JSX.Element => {
         <div className="relative bg-white w-full pt-20">
             {/* Header Title */}
             <h2 className="text-4xl font-bold mb-4">{title}</h2>
-            <div className="justify-between flex md:gap-x-10 gap-y-10 flex-col md:flex-row">
+            <div className="justify-between flex md:gap-x-10 gap-y-10 flex-col md:flex-row lg:flex-row">
                 <div className="w-full" data-aos="fade-up-right">
                     <InfoCard
                         image={require("@images/church-icon.png")}
+                        bgImage={require("@images/frauenkirche.jpg")}
                         headerText={"Dresden"}
                         pa={'St. Petrus Kirche'}
                         pb={"Dohnaer Str. 53,"}
@@ -21,6 +22,7 @@ export const AddressesSummary = ({ title }): React.JSX.Element => {
                 <div className="w-full" data-aos="fade-up-left">
                     <InfoCard
                         image={require("@images/church-icon.png")}
+                        bgImage={require("@images/leipzigcastle.jpg")}
                         headerText={"Leipzig"}
                         pa={"St. Laurentius Kirche"}
                         pb={'Stötteritzer Str. 47,'}
