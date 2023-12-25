@@ -18,9 +18,9 @@ export const Footer = (): React.JSX.Element => {
                     <a href="/" className="block hover:text-c-main">Home</a>
                     <a href="/about-us" className="block hover:text-c-main">Über Uns</a>
                     <a href="/calendar" className="block hover:text-c-main">Kalender</a>
-                    {authContext.authenticated && <a href="/bibliothek" className="hover:text-c-main">Die Bibliothek</a>}
                     <a href="/services" className="hover:text-c-main">Dienste</a>
                     <a href="/contact-us" className="block hover:text-c-main">Kontact</a>
+                    {authContext.authenticated && <a href="/bibliothek" className="hover:text-c-main">Die Bibliothek</a>}
                 </div>
 
                 <div className="w-full lg:w-1/4 px-4">

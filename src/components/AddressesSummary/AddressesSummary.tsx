@@ -10,7 +10,7 @@ export const AddressesSummary = ({ title }): React.JSX.Element => {
                 <div className="w-full" data-aos="fade-up-right">
                     <InfoCard
                         image={require("@images/church-icon.png")}
-                        bgImage={require("@images/frauenkirche.jpg")}
+                        bgImage={require("@images/frauenkirche.png")}
                         headerText={"Dresden"}
                         pa={'St. Petrus Kirche'}
                         pb={"Dohnaer Str. 53,"}
@@ -22,7 +22,7 @@ export const AddressesSummary = ({ title }): React.JSX.Element => {
                 <div className="w-full" data-aos="fade-up-left">
                     <InfoCard
                         image={require("@images/church-icon.png")}
-                        bgImage={require("@images/leipzigcastle.jpg")}
+                        bgImage={require("@images/leipzigcastle.png")}
                         headerText={"Leipzig"}
                         pa={"St. Laurentius Kirche"}
                         pb={'Stötteritzer Str. 47,'}

@@ -58,9 +58,9 @@ export const Header = (): React.JSX.Element => {
         <a href="/" className="text-c-main ">Home</a>
         <a href="/about-us" className="text-c-main ">Über Uns</a>
         <a href="/calendar" className="text-c-main ">Kalender</a>
-        {authContext.authenticated && <a href="/bibliothek" className="text-c-main ">Die Bibliothek</a>}
         <a href="/services" className="text-c-main ">Dienste</a>
         <a href="/contact-us" className="text-c-main ">Kontakt</a>
+        {authContext.authenticated && <a href="/bibliothek" className="text-c-main ">Die Bibliothek</a>}
         <div className="border-2 h-1 w-full border-c-background"></div>
 
         <a href="#" className="text-c-main " onClick={handleClick}>{authContext.authenticated ? 'Abmeldung' : 'Anmeldung'}</a>
@@ -100,10 +100,9 @@ export const Header = (): React.JSX.Element => {
             <a href="/" className="hover:text-c-main">Home</a>
             <a href="/about-us" className="hover:text-c-main">Über Uns</a>
             <a href="/calendar" className="hover:text-c-main">Kalender</a>
-            {authContext.authenticated && <a href="/bibliothek" className="hover:text-c-main">Die Bibliothek</a>}
-
             <a href="/services" className="hover:text-c-main">Dienste</a>
             <a href="/contact-us" className="hover:text-c-main">Kontakt</a>
+            {authContext.authenticated && <a href="/bibliothek" className="hover:text-c-main">Die Bibliothek</a>}
           </div>
 
           {/* Right-aligned items (Login and Language) */}
