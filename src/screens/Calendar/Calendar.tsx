@@ -39,7 +39,7 @@ export const Calendar = ({ events }: { events: Array<Event> }) => {
     }, [events])
 
     return (
-        <div className="mx-auto max-w-screen-xl">
+        <div className="mx-auto max-w-screen-xl min-w-[100%]">
             <div className="pt-10"></div>
             <div>
                 <h2 className="text-4xl font-bold mb-4">Alle Veranstaltungen</h2>

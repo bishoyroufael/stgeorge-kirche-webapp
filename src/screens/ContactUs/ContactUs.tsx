@@ -4,7 +4,7 @@ import React from "react";
 
 export const ContactUs = () => {
     return (
-        <div className="mx-auto max-w-screen-xl">
+        <div className="mx-auto max-w-screen-xl min-w-[100%]">
             <div className="pt-20"></div>
             <h2 className="text-4xl font-bold mb-4">Kontakt</h2>
 

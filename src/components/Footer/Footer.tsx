@@ -6,7 +6,7 @@ export const Footer = (): React.JSX.Element => {
 
     return (
 
-        <div className="bg-c-green text-white p-2 font-roboto m-auto text-center md:text-start">
+        <div className="bg-c-green text-white p-2 font-roboto text-center md:text-start">
             <div className="flex flex-wrap p-6">
                 <div className="w-full lg:w-1/4 px-4 flex justify-center md:block">
                     <img src={require("@images/churchlogo-footer.png")} alt="St. George Logo Header" className="h-auto object-contain w-[120px] md:w-[160px]"></img>
