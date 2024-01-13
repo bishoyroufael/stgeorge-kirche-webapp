@@ -32,7 +32,7 @@ export const App = () => {
 
     return (
         <Router>
-            <div className="mx-auto w-[95%] lg:w-[75%]">
+            <div className="mx-auto w-[95%] lg:w-[75%] grid min-h-screen grid-rows-[auto,1fr,auto]">
                 <AuthProvider>
 
                     <Header />
