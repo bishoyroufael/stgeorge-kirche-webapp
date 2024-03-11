@@ -27,7 +27,9 @@ export const Home = ({ nextThreeEvents }: { nextThreeEvents?: Array<Event> }): R
         title={"Über Uns"}
         image={require("@images/people.png")}
         headerText={"Church was doing what he often did when dropped An oracle "}
-        description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Herzlich willkommen auf der Startseite der koptischen Gemeinde St. Georg in Sachsen (in Dresden und Leipzig)! Der Besuch auf unserer Homepage ermöglicht Ihnen, unsere Aktivitäten näher kennenzulernen und uns bei Interesse zu kontaktieren. Des Weiteren können Sie die kommenden Termine und den jeweiligen Ort der heiligen Messe in Dresden und Leipzig einsehen."}
+        description={"Die koptische St. Georg Gemeinde ist über ganz Sachsen verstreut. Sie hat am 1998 in Leipzig angefangen. \
+        Zweimal im Monat trifft sie sich zur Messe, abwechselnd in Leipzig nd Dresden. Die Messe ist nur ein Teil des Gemeindelebens. \
+        Hinterher essen und reden wir gemeinsam. Für die Kinder machen auch kindergutsdienst."}
         buttonText={"Mehr info"} />
 
       {nextThreeEvents && nextThreeEvents.length != 0 && <EventsSummary title={"Nächste Veranstaltungen"} eventsData={nextThreeEvents} />}

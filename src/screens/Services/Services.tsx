@@ -10,24 +10,13 @@ export const Services = () => {
             <div data-aos="fade-left">
 
                 {/* Header Text */}
-                <h3 className="text-3xl font-bold mb-2">Unsere Dienstleistungen</h3>
+                <h3 className="text-3xl font-bold mb-2"></h3>
 
                 {/* Long Description */}
-                <p className="text-gray-600 mb-4">Willkommen bei [Name der orthodoxen Gemeinde], Ihrem Anlaufpunkt für spirituelle Erfahrungen und Gemeinschaft. Unsere Dienstleistungen bieten eine Atmosphäre der Hingabe und Einheit, in der wir die Schönheit der orthodoxen Traditionen zelebrieren. Tauchen Sie ein in unsere vielfältigen Angebote und entdecken Sie die tiefgreifende Spiritualität, die unsere Gemeinschaft prägt.
-
-                    Gottesdienste und Liturgien:
-                    Erfahren Sie die heilige Liturgie in ihrer ganzen Pracht während unserer regelmäßigen Gottesdienste. Tauchen Sie ein in die ehrwürdige Atmosphäre, begleitet von traditioneller Musik und liturgischen Gesängen. Unsere Gottesdienste sind offen für alle, die nach spiritueller Erfüllung suchen.
-
-                    Sakramente:
-                    Entdecken Sie die Bedeutung der sieben Sakramente in der orthodoxen Tradition, von der Taufe über die Eucharistie bis hin zur Krankensalbung. Unsere Gemeinde steht Ihnen bei den wichtigen Momenten des Lebens zur Seite, um Ihre spirituelle Reise zu begleiten.
-
-                    Gemeinschaft und Bildung:
-                    Treten Sie unserer Gemeinschaft bei und erleben Sie die Kraft des gemeinsamen Glaubens. Wir bieten Bildungsveranstaltungen, Diskussionsforen und soziale Aktivitäten an, um den Austausch von Glauben und Wissen zu fördern.
-
-                    Seelsorge:
-                    Unsere Seelsorger stehen Ihnen zur Seite, um Sie in Ihren persönlichen Herausforderungen zu unterstützen und spirituellen Rat zu geben. Vertraulichkeit und Mitgefühl stehen im Zentrum unserer seelsorgerischen Dienste.
-
-                    Tauchen Sie ein in die reiche spirituelle Erfahrung unserer orthodoxen Gemeinde und lassen Sie sich von der Tiefe und Schönheit unserer Dienstleistungen inspirieren. Wir laden Sie herzlich ein, Teil unserer Gemeinschaft zu werden und Ihre spirituelle Reise mit uns zu teilen.</p>
+                <p className="text-gray-600 mb-4">
+                    Unsere Gemeinde bietet eine Vielzahl spiritueller Dienste an, die darauf abzielen, den Glauben zu stärken und die Gemeinschaft unter den Gläubigen zu fördern. Zu unseren regelmäßigen Veranstaltungen gehört die wöchentliche Kommunion bzw. Messe, die ein zentraler Bestandteil unseres Glaubenslebens ist. Diese feierlichen Gottesdienste bieten eine Gelegenheit zur Reflexion, zum Gebet und zur Gemeinschaft, indem sie die Grundlagen unseres Glaubens in den Mittelpunkt stellen. <br></br> <br></br>
+                    Neben den traditionellen Zusammenkünften nutzen wir moderne Kommunikationsmittel, um unsere Gemeinschaft auch virtuell zu stärken. So finden zweimal im Monat Online-Gebetstreffen über Skype statt, die es unseren Mitgliedern ermöglichen, sich von überall aus zu verbinden und gemeinsam zu beten. Diese virtuellen Treffen ergänzen unsere zweimal im Monat stattfindenden physischen Zusammenkünfte, bei denen wir uns persönlich austauschen und unsere Glaubensgemeinschaft pflegen können.  <br></br> <br></br>
+                    Darüber hinaus organisiert unsere Gemeinde im Laufe des Jahres verschiedene Ausflüge und Konferenzen. Diese besonderen Veranstaltungen bieten eine einzigartige Gelegenheit für Bildung, spirituelles Wachstum und Gemeinschaft. Sie sind eine wertvolle Ergänzung zu unserem regelmäßigen Gottesdienstprogramm und stärken das Gefühl der Zugehörigkeit und der gemeinsamen Glaubenserfahrung unter den Mitgliedern unserer Kirche.</p>
 
             </div>
         </div>
