@@ -26,11 +26,14 @@ export const Home = ({ nextThreeEvents }: { nextThreeEvents?: Array<Event> }): R
       <ImageWithTitleAndDescription
         title={"Über Uns"}
         image={require("@images/people.png")}
-        headerText={"Church was doing what he often did when dropped An oracle "}
+        headerText={"Wer sind wir ?"}
         description={"Die koptische St. Georg Gemeinde ist über ganz Sachsen verstreut. Sie hat am 1998 in Leipzig angefangen. \
         Zweimal im Monat trifft sie sich zur Messe, abwechselnd in Leipzig nd Dresden. Die Messe ist nur ein Teil des Gemeindelebens. \
         Hinterher essen und reden wir gemeinsam. Für die Kinder machen auch kindergutsdienst."}
-        buttonText={"Mehr info"} />
+        buttonText={"Mehr info"} 
+        buttonHref={"/about-us"}
+        />
+
 
       {nextThreeEvents && nextThreeEvents.length != 0 && <EventsSummary title={"Nächste Veranstaltungen"} eventsData={nextThreeEvents} />}
       <AddressesSummary title={"Wo Finden Sie Uns?"} />
