@@ -37,7 +37,7 @@ export const LogIn = () => {
         setError(null);
 
         try {
-            const auth = new API.AuthRoutesApi(undefined, process.env.REACT_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
+            const auth = new API.AuthRoutesApi(undefined, process.env.APP_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
             const response = await auth.apiV1AuthLogInPost(formData.email, formData.password, { withCredentials: true })
 
             // console.log('Server Response:', response.data);
@@ -55,7 +55,7 @@ export const LogIn = () => {
     };
 
     return (
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-screen-xl mx-auto w-full">
             <div className="pt-20"></div>
             <h2 className="text-4xl font-bold mb-4">Log In</h2>
 

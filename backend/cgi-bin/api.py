@@ -12,7 +12,7 @@ from datetime import timedelta
 from apiflask import APIFlask
 from flask_cors import CORS
 
-app = APIFlask(__name__, spec_path='/spec', title='StGeorge Kirch API')
+app = APIFlask(__name__, spec_path='/spec', title='StGeorge Kirch API', docs_path=None)
 CORS(app, origins=['*'], supports_credentials=True, headers=['Content-Type'], expose_headers=['Access-Control-Allow-Origin'])
 
 # Set the session timeout to 15 minutes

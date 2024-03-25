@@ -25,7 +25,7 @@ export const Home = ({ nextThreeEvents }: { nextThreeEvents?: Array<Event> }): R
       {/* Uber Uns Section */}
       <ImageWithTitleAndDescription
         title={"Über Uns"}
-        image={require("@images/people.png")}
+        image={require("@images/people.jpg")}
         headerText={"Wer sind wir ?"}
         description={"Die koptische St. Georg Gemeinde ist über ganz Sachsen verstreut. Sie hat am 1998 in Leipzig angefangen. \
         Zweimal im Monat trifft sie sich zur Messe, abwechselnd in Leipzig nd Dresden. Die Messe ist nur ein Teil des Gemeindelebens. \

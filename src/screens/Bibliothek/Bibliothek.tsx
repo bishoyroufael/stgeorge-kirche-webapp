@@ -29,7 +29,7 @@ export const Bibliothek = () => {
     const [storageData, setStorageData] = useState<API.StorageFiles>(null);
     // Hardcoded file data
 
-    const storageApi = new API.StorageRoutesApi(undefined, process.env.REACT_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
+    const storageApi = new API.StorageRoutesApi(undefined, process.env.APP_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
 
     // Event handlers for download and remove actions
     const handleDownload = (fileName: string) => {

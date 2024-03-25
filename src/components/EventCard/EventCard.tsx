@@ -37,7 +37,7 @@ export const EventCard = ({eventName, date, location}): React.JSX.Element => {
     const dateInfo = getDateInfo(date)
     return (
         <div className="flex flex-col flex-grow bg-c-green rounded-md p-6 shadow-md lg:max-w-md mx-auto w-full m-h-[221px]">
-            <p className="text-c-main text-md font-bold uppercase font-roboto text-left">UPCOMING EVENT</p>
+            <p className="text-c-main text-md font-bold uppercase font-roboto text-left">Nächste Veranstaltung</p>
 
             <div className="flex items-center justify-between my-2">
                 <h2 className="text-white text-2xl lg:text-4xl font-bold font-roboto">{eventName}</h2>

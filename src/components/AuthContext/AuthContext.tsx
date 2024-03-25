@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState<boolean>(undefined);
 
   useEffect(() => {
-    const authApi = new API.AuthRoutesApi(undefined, process.env.REACT_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
+    const authApi = new API.AuthRoutesApi(undefined, process.env.APP_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
     authApi.apiV1AuthIsLoggedGet({ withCredentials: true }).then((response) => {
       // console.log('user authenticated from server!')
       setAuthenticated(true);

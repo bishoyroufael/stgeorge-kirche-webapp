@@ -14,7 +14,7 @@ export const Header = (): React.JSX.Element => {
     if (authContext.authenticated) {
       // Log out
       (async () => {
-        const authApi = new API.AuthRoutesApi(undefined, process.env.REACT_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
+        const authApi = new API.AuthRoutesApi(undefined, process.env.APP_ENV == 'DEV' ? LOCAL_API_SERVER : PROD_API_SERVER)
         const response = await authApi.apiV1AuthLogOutPost({ withCredentials: true })
         if (response.status == 200) {
           authContext.setAuthenticated(false);
